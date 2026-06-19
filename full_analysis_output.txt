@@ -1,0 +1,224 @@
+N (raw): 557 | N (after listwise deletion): 552
+
+=======================================================================
+SECTION 1: SAMPLE ADEQUACY AND COMMON METHOD BIAS
+=======================================================================
+
+--- KMO Measure of Sampling Adequacy ---
+  Overall KMO = 0.822
+  Interpretation: Meritorious
+
+--- Bartlett's Test of Sphericity ---
+  chi-sq = 3459.526, df = 120, p < .001
+  Indicator-to-sample ratio: 552:16 = 34.5:1
+
+--- Harman's Single-Factor Test (CMB diagnostic) ---
+  Single-factor chi-sq = 1710.01 (df = 104, p < .001)
+  CFI = 0.526
+  RMSEA = 0.167
+  Interpretation: Poor single-factor fit indicates CMB
+  is not a dominant concern.
+
+--- CFA Unmeasured Latent Factor (ULF) test ---
+  Substantive CFA CFI = 0.925
+  CFA + CMF CFI       = 0.924
+  Delta CFI           = -0.000
+  Result: Delta CFI < .010 — CMB not a major concern
+
+=======================================================================
+SECTION 2: DATA DISTRIBUTION AND NORMALITY
+=======================================================================
+
+--- Item-level descriptives ---
+                        Item  Mean    SD Skewness Kurtosis Skew_flag Kurt_flag
+             AD_Q5_frequency 4.187 0.862   -0.926    0.614        OK        OK
+    AD_Q6_reliance_decisions 4.178 1.548   -0.230   -0.315        OK        OK
+   AD_Q7_rely_vs_independent 4.255 1.550   -0.129   -0.476        OK        OK
+     AD_Q10_accept_no_verify 4.342 1.776   -0.306   -0.768        OK        OK
+ AR_Q14_remorseful_avoidance 4.290 1.689   -0.206   -0.661        OK        OK
+    AR_Q15_regret_dependency 4.158 1.755   -0.154   -0.767        OK        OK
+   AR_Q16_regret_after_tasks 4.170 1.701   -0.240   -0.636        OK        OK
+ AR_Q11_fear_weaken_thinking 5.301 1.741   -0.851   -0.168        OK        OK
+    AR_Q12_aware_recall_loss 4.705 1.780   -0.506   -0.570        OK        OK
+           PB_Q17_saves_time 5.554 1.515   -1.101    0.626        OK        OK
+           PB_Q18_confidence 4.710 1.719   -0.562   -0.393        OK        OK
+  PB_Q19_learning_efficiency 5.051 1.502   -0.580    0.028        OK        OK
+         PB_Q20_satisfaction 4.596 1.416   -0.444    0.041        OK        OK
+        PB_Q21_collaborative 5.196 1.468   -0.787    0.352        OK        OK
+        CE_Q8_starting_point 4.824 1.734   -0.386   -0.782        OK        OK
+            CE_Q9_crosscheck 4.926 1.657   -0.463   -0.695        OK        OK
+
+  Items with |skewness| > 2: 0
+  Items with |kurtosis| > 7: 0
+
+--- Construct-level descriptives ---
+ Construct  Mean    SD Min Max   Skew   Kurt
+        AD 4.240 1.020   1 6.5 -0.278  0.104
+        AR 4.525 1.340   1 7.0 -0.292 -0.302
+        PB 5.021 1.204   1 7.0 -0.729  0.819
+        CE 4.875 1.449   1 7.0 -0.412 -0.379
+
+--- Mardia's Multivariate Normality Test ---
+  Multivariate skewness: estimate = 38.55, statistic = 3546.70, p < .001
+  Multivariate kurtosis: estimate = 356.30, statistic = 33.43, p = 0.000
+  Result: Multivariate normality violated.
+  MLR estimator with Satorra-Bentler correction is justified.
+
+--- Inter-construct correlations (Pearson, 95% CI) ---
+  Var1   Var2          r        p         95% CI
+  AD     AR        0.114   0.0074  [0.031, 0.196]
+  AD     PB        0.480   0.0000  [0.413, 0.541]
+  AD     CE        0.373   0.0000  [0.299, 0.443]
+  AR     PB        0.202   0.0000  [0.121, 0.281]
+  AR     CE        0.186   0.0000  [0.104, 0.265]
+  PB     CE        0.524   0.0000  [0.461, 0.582]
+
+=======================================================================
+SECTION 3: MEASUREMENT MODEL EVALUATION (CFA)
+=======================================================================
+
+--- CFA Model Fit Indices ---
+  chi-sq (SB)  = 307.21 (df = 93, p < .001)
+  CFI          = 0.925
+  TLI          = 0.903
+  RMSEA        = 0.070 [90% CI: 0.062-0.079]
+  SRMR         = 0.071
+
+--- Standardized Factor Loadings ---
+ lhs                         rhs est.std    se      z pvalue sig
+  AD    AD_Q6_reliance_decisions   0.679 0.040 16.852      0 ***
+  AD   AD_Q7_rely_vs_independent   0.758 0.039 19.431      0 ***
+  AD     AD_Q10_accept_no_verify   0.451 0.052  8.677      0 ***
+  AD             AD_Q5_frequency   0.387 0.055  7.006      0 ***
+  AR AR_Q14_remorseful_avoidance   0.787 0.031 25.765      0 ***
+  AR    AR_Q15_regret_dependency   0.869 0.025 35.297      0 ***
+  AR   AR_Q16_regret_after_tasks   0.791 0.030 26.272      0 ***
+  AR AR_Q11_fear_weaken_thinking   0.406 0.045  9.040      0 ***
+  AR    AR_Q12_aware_recall_loss   0.568 0.039 14.545      0 ***
+  PB           PB_Q17_saves_time   0.751 0.040 18.949      0 ***
+  PB           PB_Q18_confidence   0.627 0.043 14.603      0 ***
+  PB  PB_Q19_learning_efficiency   0.766 0.033 22.917      0 ***
+  PB         PB_Q20_satisfaction   0.724 0.043 16.746      0 ***
+  PB        PB_Q21_collaborative   0.729 0.045 16.368      0 ***
+  CE        CE_Q8_starting_point   0.799 0.041 19.326      0 ***
+  CE            CE_Q9_crosscheck   0.578 0.049 11.805      0 ***
+
+--- Freed Correlated Residuals ---
+                         lhs                        rhs est.std    se      z
+ AR_Q11_fear_weaken_thinking   AR_Q12_aware_recall_loss   0.481 0.046 10.532
+           PB_Q18_confidence PB_Q19_learning_efficiency   0.262 0.082  3.213
+           PB_Q17_saves_time       PB_Q21_collaborative   0.184 0.082  2.246
+           PB_Q17_saves_time        PB_Q20_satisfaction  -0.239 0.117 -2.040
+         PB_Q20_satisfaction       PB_Q21_collaborative   0.151 0.101  1.500
+ pvalue
+  0.000
+  0.001
+  0.025
+  0.041
+  0.134
+
+=======================================================================
+SECTION 4: RELIABILITY AND CONVERGENT VALIDITY
+=======================================================================
+
+--- Reliability and Convergent Validity Summary ---
+ Construct Alpha CR_omega   AVE Alpha_ok CR_ok AVE_ok
+        AD 0.636    0.679 0.373       No    No     No
+        AR 0.832    0.780 0.494      Yes   Yes     No
+        PB 0.848    0.822 0.512      Yes   Yes    Yes
+        CE 0.631    0.653 0.493       No    No     No
+
+  Thresholds: alpha >= .70, CR >= .70, AVE >= .50
+  Note: AD and CE below threshold due to item heterogeneity
+        and 2-item CE constraint. Acknowledged as limitations.
+
+=======================================================================
+SECTION 5: DISCRIMINANT VALIDITY
+=======================================================================
+
+--- HTMT Ratios (threshold < 0.85) ---
+      AD    AR    PB    CE
+AD 1.000                  
+AR 0.185 1.000            
+PB 0.657 0.185 1.000      
+CE 0.556 0.222 0.705 1.000
+
+  All HTMT values must be < 0.85. Values above indicate
+  potential discriminant validity issues.
+
+--- Fornell-Larcker: sqrt(AVE) vs latent correlations ---
+  (Diagonal = sqrt(AVE); off-diagonal = latent correlations)
+      AD    AR    PB    CE
+AD 0.610                  
+AR 0.092 0.703            
+PB 0.607 0.186 0.716      
+CE 0.583 0.149 0.696 0.702
+  sqrt(AVE) should exceed all off-diagonal values in its row/column.
+
+=======================================================================
+SECTION 6: STRUCTURAL MODEL FIT AND PATH COEFFICIENTS
+Bootstrap n = 5,000 | BCa 95% CI | estimator = ML
+=======================================================================
+
+--- Structural Model Fit (MLR) ---
+  chi-sq (SB) = 306.95 (df = 94, p < .001)
+  CFI = 0.925  |  TLI = 0.904
+  RMSEA = 0.070 [90% CI: 0.061-0.078]  |  SRMR = 0.071
+
+--- R-squared (endogenous constructs) ---
+  AD    R^2 = 0.419  f^2 = 0.720 (large)
+  AR    R^2 = 0.036  f^2 = 0.038 (small)
+  PB    R^2 = 0.486  f^2 = 0.945 (large)
+
+--- Structural Paths: B, SE, z, p, 95% BCa CI, beta (std) ---
+ Hyp lhs rhs    est    se      z pvalue ci.lower ci.upper std.all sig
+  H1  AR  AD -0.040 0.125 -0.321  0.749   -0.295    0.197  -0.032  ns
+  H2  AD  PB  0.361 0.094  3.851  0.000    0.172    0.540   0.391 ***
+  H3  AR  PB  0.243 0.098  2.482  0.013    0.053    0.445   0.208   *
+  H4  PB  CE  0.572 0.080  7.185  0.000    0.419    0.727   0.697 ***
+  H5  AD  CE  0.235 0.088  2.684  0.007    0.080    0.432   0.310  **
+      Decision
+ Not supported
+     Supported
+     Supported
+     Supported
+     Supported
+
+=======================================================================
+SECTION 7: MEDIATION ANALYSIS — CE -> PB -> AD (H6)
+Bootstrap n = 5,000 | BCa 95% CI | estimator = ML
+=======================================================================
+
+--- Defined parameters (indirect, total, proportion mediated) ---
+    label   est    se     z pvalue ci.lower ci.upper std.all sig
+ indirect 0.207 0.057 3.604  0.000    0.110    0.338   0.273 ***
+    total 0.441 0.058 7.599  0.000    0.335    0.564   0.583 ***
+       pm 0.468 0.152 3.086  0.002    0.205    0.806   0.468  **
+
+--- All structural paths (bootstrapped SE, BCa CI) ---
+ lhs rhs    est    se      z pvalue ci.lower ci.upper std.all sig
+  PB  CE  0.572 0.080  7.185  0.000    0.419    0.727   0.697 ***
+  AD  PB  0.361 0.094  3.851  0.000    0.172    0.540   0.391 ***
+  AD  CE  0.235 0.088  2.684  0.007    0.080    0.432   0.310  **
+  AR  AD -0.040 0.125 -0.321  0.749   -0.295    0.197  -0.032  ns
+  AR  PB  0.243 0.098  2.482  0.013    0.053    0.445   0.208   *
+
+  Mediation interpretation:
+  - indirect CI excludes 0  -> mediation is significant
+  - c_prime significant     -> partial mediation
+  - c_prime non-significant -> full mediation
+
+Saving path diagram -> sem_path_diagram_final.pdf
+Saved.
+
+=======================================================================
+ANALYSIS COMPLETE
+Output covers all sections required for manuscript:
+  1. Sample adequacy (KMO, Bartlett) + CMB (Harman + ULF)
+  2. Normality (item-level skew/kurt + Mardia's MVN)
+  3. CFA fit + loadings + freed residuals
+  4. Reliability (alpha, CR/omega) + AVE
+  5. Discriminant validity (HTMT + Fornell-Larcker)
+  6. Structural paths: B, SE, z, p, 95% BCa CI, beta
+  7. Mediation: indirect/direct/total + BCa CI
+=======================================================================
