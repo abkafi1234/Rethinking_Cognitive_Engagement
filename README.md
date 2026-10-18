@@ -1,113 +1,34 @@
-# Critical Engagement and AI Dependency Among University Students
+# Critical engagement and generative AI dependency: a test of the protective-factor assumption
 
-A cross-sectional structural equation modeling study examining the associations
-among critical engagement, perceived benefits, AI dependency, and AI-induced
-remorse in undergraduate students.
+Manuscript and analysis for a cross-sectional survey of 552 computer science and engineering undergraduates at three universities in Bangladesh. The research question: is critical engagement with generative AI associated with *less* AI dependency, as AI-literacy frameworks assume, once frequency of use and AI-use experience are controlled? It is not. Critical engagement is associated with *more* dependency (β = .46, 95% CI [.32, .60]).
 
-## Overview
+- **Target journal:** Education and Information Technologies (Springer).
+- **Status (2026-10-18):** submission draft. Open items for the authors are listed in [docs/revision_summary.md](docs/revision_summary.md).
 
-This repository contains the data, analysis code, and manuscript sections for
-a study testing whether critical engagement with AI tools is associated with
-*lower* AI dependency, as commonly assumed in AI literacy frameworks, or
-whether that protective assumption fails to hold. Using survey data from 552
-university students and covariance-based structural equation modeling
-(CB-SEM), the study finds that critical engagement is **positively**
-associated with AI dependency, both directly and indirectly through perceived
-benefits, contrary to the protective-factor assumption found in AI literacy,
-media literacy, and health behaviour research. AI-induced remorse, in turn,
-is associated with perceived benefits rather than with dependency itself.
+## Folders
 
-## Constructs
-
-| Code | Construct | Items | Description |
-|------|-----------|-------|--------------|
-| AD | AI Dependency | 4 | Reliance on AI for decisions, problem-solving, and verification under time pressure |
-| AR | AI-Induced Remorse | 5 | Guilt and regret associated with AI reliance |
-| PB | Perceived Benefits | 5 | Beliefs about AI's value for time savings, confidence, and learning |
-| CE | Critical Engagement | 2 | Reflective and evaluative use of AI outputs |
-
-
-> **Note on file versions:** several `.R` and `.tex` files in this repository
-> represent earlier iterations kept for traceability. **`full_analysis.R`** is
-> the authoritative analysis script. For the manuscript text, the most recent
-> file in each section (by filename and date) supersedes earlier drafts —
-> see the "Which file is final" table below.
-
-## Which File Is Final
-
-| Section | Use this file |
+| Folder | Contents |
 |---|---|
-| Data cleaning + construct scoring | `cleaned_constructs.csv` |
-| Full CFA / SEM / mediation analysis | `full_analysis.R` |
-| Preliminary diagnostics (KMO, Bartlett, Harman, Mardia) | `diagnostic_tests.R` (now folded into `full_analysis.R`) |
-| Abstract | `abstract_theme_final.tex` |
-| Introduction & Theory | `intro_theory_final.tex` |
-| Methodology | `methodology_rewrite.tex` |
-| Results | `results_rewrite.tex` |
-| Discussion | `discussion_rewrite.tex` |
-| Limitations & Conclusion | `limitations_conclusion_rewrite.tex` |
+| [manuscript/](manuscript/) | `main.tex` and `main.pdf` (the paper), the anonymised version, title page, cover letter and the upload set in `submission/`; `references.bib`, figures, reference scripts; `archive/` holds the earlier Elsevier version ("Update 2") |
+| [analysis/](analysis/) | `sem_analysis.R` produces every result in the paper; `output/` holds the log, tables and `manuscript_values.md` |
+| [data/](data/) | `raw/Dataset.csv` (557 responses) and `processed/cleaned_constructs.csv` (552 analytic cases) |
+| [docs/](docs/) | Revision summary, statistical corrections, novelty and positioning memo, literature comparison table, title and structure plan, benchmark against ten EAIT papers |
+| [literature_search/](literature_search/) | All Consensus searches (S1–S14) and their results; `eait_exemplars/` holds 12 EAIT papers read for title and structure conventions |
+| [journal_selection/](journal_selection/) | Journal recommendation report, ACU eligibility list and metrics |
+| [ethics/](ethics/) | Ethics approval, consent form, data usage agreement. The approval for this study is ref. IEC-FSIT/DIU/2025/2008; `REC Approval.pdf` belongs to a different study (see `ethics/README.md`) |
+| [github_repo/](github_repo/) | README for the public data repository (github.com/abkafi1234/Rethinking_Cognitive_Engagement) |
 
-## Method Summary
+## Reproduce
 
-- **Design:** Cross-sectional online survey (Google Forms), convenience sampling
-- **Sample:** 552 undergraduate CSE students (after listwise deletion from 557 responses), three Bangladeshi universities
-- **Scale:** 7-point Likert (1 = strongly disagree to 7 = strongly agree); one frequency item recoded from ordinal to numeric
-- **Estimator:** MLR (Satorra–Bentler robust correction) for CFA/SEM fit indices; ML with 5,000-resample bootstrap and BCa 95% CIs for structural paths and mediation
-- **Software:** R, `lavaan`, `semTools`, `psych`
+From this folder:
 
-## Key Results
-
-| Path | β (std.) | p | Decision |
-|------|----------|---|----------|
-| AD → AR (H1) | −.032 | .749 | Not supported |
-| PB → AD (H2) | .391 | <.001 | Supported |
-| PB → AR (H3) | .208 | .013 | Supported |
-| CE → PB (H4) | .697 | <.001 | Supported |
-| CE → AD (H5) | .310 | .007 | Supported |
-| CE → PB → AD, indirect (H6) | .273 | <.001 | Supported (partial mediation) |
-
-**Model fit:** CFI = .925, TLI = .903, RMSEA = .070 [.062, .079], SRMR = .071
-
-Full statistics, including standard errors, z-values, and 95% bias-corrected
-accelerated bootstrap confidence intervals, are reported in `results_rewrite.tex`.
-
-## Reproducing the Analysis
-
-```r
-# 1. Install dependencies
-install.packages(c("lavaan", "semTools", "semPlot", "psych", "dplyr"))
-
-# 2. Set working directory to wherever cleaned_constructs.csv is saved
-setwd("path/to/this/repository")
-
-# 3. Run the full analysis (saves output to console; redirect with sink() if needed)
-source("full_analysis.R", encoding = "UTF-8")
+```bash
+Rscript analysis/sem_analysis.R          # all results, about 75 s (two sets of 5,000 bootstrap resamples)
+Rscript analysis/make_figures.R          # Figure 2
+cd manuscript && latexmk -pdf -outdir=build main.tex && cp build/main.pdf main.pdf
 ```
 
-Outputs include CFA fit indices, standardized loadings, reliability and
-validity tables (α, CR/ω, AVE, HTMT), structural path coefficients with
-bootstrapped CIs, mediation results, and a path diagram (`sem_path_diagram_final.pdf`).
+Requirements:
 
-## Data
-
-`cleaned_constructs.csv` contains 552 rows and 16 item-level columns
-(4 per construct, except CE with 2), recoded and renamed from the raw
-`cleaned.csv` survey export. Item wording and codes are listed in the
-Measures table within `methodology_rewrite.tex`.
-
-## Limitations
-
-- Cross-sectional design: associations, not causal effects
-- Critical Engagement measured with 2 items only (tau-equivalence constraint)
-- AI Dependency includes one ordinal-scale item (frequency), introducing minor scale heterogeneity
-- Convenience sample from three Bangladeshi universities; generalizability untested
-
-See `limitations_conclusion_rewrite.tex` for the full discussion.
-
-## Citation
-
-Citation details to be added upon acceptance/publication.
-
-## License
-
-MIT
+- R 4.6 with lavaan 0.7-3, semTools 0.5-10 and psych 2.6.9.
+- TeX Live with apacite, newtx and TikZ.
