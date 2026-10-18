@@ -13,7 +13,9 @@
 #     of use and AI-use experience.
 #
 # Run from the project folder:   Rscript analysis/sem_analysis.R
-# Inputs : data/raw/Dataset.csv, data/processed/cleaned_constructs.csv
+#   or, with Dataset.csv and cleaned_constructs.csv in the same folder as this script (as in the public
+#   data repository), from that folder:   Rscript sem_analysis.R
+# Inputs : data/raw/Dataset.csv, data/processed/cleaned_constructs.csv (or both files in the working folder)
 # Outputs: analysis/output/  (log, CSV tables, results_summary.md, manuscript_values.md and
 #          online_resource_2_tables.tex, the tables of Online Resource 2)
 # Replaces analysis/legacy/SEM_analysis_supplementary.ipynb (four-construct version).
@@ -46,8 +48,13 @@ cat(R.version.string, "\nlavaan", as.character(packageVersion("lavaan")),
 
 # -------------------------------------------------------------------------------------
 section("1. Data")
-raw <- read.csv("data/raw/Dataset.csv", check.names = FALSE, stringsAsFactors = FALSE)
-dat <- read.csv("data/processed/cleaned_constructs.csv")
+in_file <- function(...) {                      # project layout first, then the working folder
+  p <- c(...)[file.exists(c(...))]
+  if (length(p) == 0) stop("Data file not found: ", paste(c(...), collapse = " or "), call. = FALSE)
+  p[1]
+}
+raw <- read.csv(in_file("data/raw/Dataset.csv", "Dataset.csv"), check.names = FALSE, stringsAsFactors = FALSE)
+dat <- read.csv(in_file("data/processed/cleaned_constructs.csv", "cleaned_constructs.csv"))
 v14 <- raw[[grep("^14\\.", names(raw))]]
 keep <- !(is.na(v14) | trimws(as.character(v14)) == "")   # the 5 excluded cases have a blank Q14
 stopifnot(sum(keep) == nrow(dat))
